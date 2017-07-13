@@ -107,16 +107,35 @@ describe('Blog App API with MongoDB', function() {
         content: faker.lorem.paragraph()
       };
 
-      return chai.request(app)
-        .get('/posts')
-        .then(function(res) {
-          console.log(res.body[0].id);
+      return BlogPost
+        .findOne()
+        .exec()
+        .then(function(post) {
+          changedPost.id = post.id;
           return chai.request(app)
-          .post(`/posts/${res.body[0].id}`)
-          .send(changedPost)
-          .then(function() {
-            console.log(res.body);
-          });
+            .put(`/posts/${post.id}`)
+            .send(changedPost)
+            .then(function(res) {
+              res.should.have.status(201);
+              res.should.be.json;
+            });
+      });
+    });
+  });
+
+  describe('Delete a post', function() {
+    it('should delete an existing post. Should also check to see if the post does not exist anymore.', function() {
+      let deletePost = {};
+      return BlogPost
+        .findOne()
+        .exec()
+        .then(function(post) {
+          deletePost.id = post.id;
+          return chai.request(app)
+            .delete(`/posts/${post.id}`)
+            .then(function(res) {
+              res.should.have.status(204);
+            });
         });
     });
   });
