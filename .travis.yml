@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: fg7Y14MU+O4ZW11uTIDkDNnraIPh3b8HdMbyNfxFfHj6WiKwdYRCvCx1ivbvfjgJhQy54GjTawFNecHsh+ui55x55J/YNtbI8ai0b/Nj6mtM4AFphHjEVzwqTdvssoyKoui3mUAtNpCz/rtxoVftXE2A7MGEWRnxdCwcIyhOnF3lju44NSem1PhgBCK99J0DvQdk+LTzr6OAarrZQwTwIqtsyudH9SmKJFrNltVFWZyw1XodXsUPQsGMpj9BiQT241Lqj3lfW1GooZOVZ/AF3Ae0MgQVj747atvuIlqx/yqdfDKOsAifA1MNYzKOPUJ98fX8n6RCsvG2xJM2f3vCz1CThROgyGrp0nLjIk0yEchZda5FIrfBIB76t2hkkG6/aCZ03PrUVAmClfvBPEjin6PeaRHcQuUJk3WAt+NpOu76fh1zhr2h1qRua+y/s6xR2h6fghNr2u2reMEYNGuCAv/Am2SrOHBOg/6XK76tjjy2v7zFmXFjZZYZnGrZDb54eNsb5Mg1dk4C2fg5vtA5W/MsG8HWI28BoovE1sf4xha/3wjrk1DkcnCz3eRrn68zwMCIZrf5mUQ/KQN3Yzou9n2dUsKUnBqDL9S5phIwJ4aJh95x1zgpE+mG0+htZ1cIVzhjgp/UktUtWxyInFh1Ov/EGUIDj+wjaA27l7JQv/o=
+  app: mini-blog-with-ci
+  on:
+    repo: aaronmiller/mini-blog-app-with-ci
